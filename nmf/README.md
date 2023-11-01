@@ -1,6 +1,6 @@
 # Non-negative Matrix Factorization with RNASeq Data
 
-## Steps outline
+## Outline of the main steps
 
 1. Preprocessing
    
@@ -11,3 +11,17 @@
 3. Gene Ontology Analysis
 
   	Gene enrichment analysis is described in detail in the R Markdown file 
+
+---
+
+## 1. Preprocessing
+
+
+Downloading the raw RNAseq data from EBI
+
+```
+./dl_aba_timeEvolve.sh
+
+```
+
+	Make sure after executing this command in the terminal, the folders (whose names start with SRR) and files (with fatsq.gz extensions and names same as the folder names) are created and downloaded respectively.
