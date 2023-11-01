@@ -1,0 +1,60 @@
+```{r }
+
+library("tximport")
+library(rtracklayer)
+
+files <- file.path("quants", paste0("SRR34180",sprintf("%02d", 1:28),"_quant"), "quant.sf")
+names(files) <- paste0("sample", 1:28)
+all(file.exists(files))
+
+```
+
+```{r }
+#paste0("a",sprintf("%02d", 1:99),"b")
+my_obj <- import("/home/arun/Documents/R_files/MSMB/RNASeqPipeline/salmon_tutorial/data/AtRTD2_19April2016.gtf")
+my_df <- data.frame(transcript_id = my_obj$transcript_id, gene_id = my_obj$gene_id)
+
+```
+
+```{r }
+
+txi <- tximport(files, type="salmon", tx2gene=my_df)
+
+```
+
+```{r }
+sampleTable <- read.csv("data/SraRunTable_ABA.csv")
+sampleTable <- data.frame(Run=sampleTable$Run, condition=sampleTable$Treatment)
+rownames(sampleTable) <- colnames(txi$counts)
+
+```
+
+
+
+```{r }
+library(DESeq2)
+dds <-  DESeqDataSetFromTximport(txi, sampleTable, ~condition)
+dds <- DESeq(dds)
+vst <- assay(vst(dds))
+```
+
+```{r }
+write.csv(vst, "aba_mat_vst.csv")
+
+
+```
+
+
+```{r }
+#BiocManager::install('PCAtools')
+library(PCAtools)
+p <- pca(t(vst))
+screeplot(p, axisLabSize = 18, titleLabSize = 22)
+
+```
+
+```{r }
+
+plot(p$loadings[,2], xlim=c(1,28), ylim=c(-3.0,3.0))
+
+```

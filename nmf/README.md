@@ -28,20 +28,25 @@ Downloading the raw RNAseq data from EBI
 Make sure after executing this command in the terminal, the folders (whose names start with SRR) and files (with fatsq.gz extensions and names same as the folder names) are created and downloaded respectively.
 
 
-Download the reference genome
+Downloading the reference genome
 
 ```
 curl ftp://ftp.ensemblgenomes.org/pub/plants/release-28/fasta/arabidopsis_thaliana/cdna/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz -o athal.fa.gz
 ```
 
-Prepare the index that salmon will use later on
+Preparing the index that salmon will use later on
 
 ```
 salmon index -t athal.fa.gz -i athal_index
 ```
 
-Quantify the transcript level in the raw data using salmon package
+Quantifying the expression level of each transcript from the raw data using salmon package
 
 ```
 ./run_salmon_on_ABATimeEvolve.sh
 ```
+
+Aggregating the the transcript expression levels to generate gene-level expression table
+
+I have used tximport package from R to perform this task. The details can be found in the 'fromSalmon2tximport_aba.Rmd' file.
+
