@@ -28,7 +28,7 @@ Downloading the raw RNAseq data from EBI
 Make sure after executing this command in the terminal, the folders (whose names start with SRR) and files (with fatsq.gz extensions and names same as the folder names) are created and downloaded respectively.
 
 
-Downloading the reference genome
+*Downloading the reference genome*
 
 ```
 curl ftp://ftp.ensemblgenomes.org/pub/plants/release-28/fasta/arabidopsis_thaliana/cdna/Arabidopsis_thaliana.TAIR10.28.cdna.all.fa.gz -o athal.fa.gz
