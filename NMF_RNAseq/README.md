@@ -4,7 +4,7 @@
 
 1. Preprocessing
    
-   I have mentioned below the steps involved in downloading and preparing the count table
+   I have mentioned below the steps involved in downloading and preparing the count table.
 2. NMF
    
    Performing Non-negative matrix factorization is described in detail in the accompanying jupyter notebook
@@ -25,7 +25,7 @@
 ```
 
 
-Make sure after executing this command in the terminal, the folders (whose names start with SRR) and files (with fatsq.gz extensions and names same as the folder names) are created and downloaded respectively.
+Make sure that after executing this command in the terminal the folders (whose names start with 'SRR') and files (with '.fatsq.gz' extensions and names same as the folder names) are created and downloaded respectively.
 
 
 **Downloading the reference genome**
